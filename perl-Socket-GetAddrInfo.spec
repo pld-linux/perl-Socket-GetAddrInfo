@@ -9,7 +9,7 @@ Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 #Summary(pl.UTF-8):
 Name:		perl-Socket-GetAddrInfo
 Version:	0.13
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -79,7 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README
+%dir %{perl_vendorarch}/Socket
 %{perl_vendorarch}/Socket/*.pm
+%dir %{perl_vendorarch}/auto/Socket
 %dir %{perl_vendorarch}/auto/Socket/GetAddrInfo
 %{perl_vendorarch}/auto/Socket/GetAddrInfo/*.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/Socket/GetAddrInfo/*.so

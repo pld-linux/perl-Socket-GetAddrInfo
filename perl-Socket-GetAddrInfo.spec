@@ -8,14 +8,15 @@
 Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 #Summary(pl.UTF-8):
 Name:		perl-Socket-GetAddrInfo
-Version:	0.13
-Release:	2
+Version:	0.15
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Socket-GetAddrInfo-%{version}.tar.gz
-# Source0-md5:	235f1635bf553ab83f837ae264d47ffc
+# Source0-md5:	a2dfcbc44b7e4b24dd0e6ac0996eb4b8
 URL:		http://search.cpan.org/dist/Socket-GetAddrInfo/
+BuildRequires:	perl-ExtUtils-CChecker
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}

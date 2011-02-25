@@ -8,22 +8,18 @@
 Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 #Summary(pl.UTF-8):
 Name:		perl-Socket-GetAddrInfo
-Version:	0.15
-Release:	2
+Version:	0.20
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Socket-GetAddrInfo-%{version}.tar.gz
-# Source0-md5:	a2dfcbc44b7e4b24dd0e6ac0996eb4b8
+# Source0-md5:	6fd3dc7f0ce9ca20a540372711533472
 URL:		http://search.cpan.org/dist/Socket-GetAddrInfo/
-BuildRequires:	perl-ExtUtils-CChecker
+BuildRequires:	perl-ExtUtils-CChecker >= 0.06
+%{?with_tests:BuildRequires:	perl-Test-Pod}
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
-%if %{with tests}
-BuildRequires:	perl-Test-Exception
-BuildRequires:	perl-Test-Pod
-BuildRequires:	perl-Test-Warn
-%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -72,9 +68,6 @@ rm -rf $RPM_BUILD_ROOT
 
 ./Build install
 
-install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-cp -a examples $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -87,5 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorarch}/auto/Socket/GetAddrInfo
 %{perl_vendorarch}/auto/Socket/GetAddrInfo/*.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/Socket/GetAddrInfo/*.so
+%dir %{perl_vendorarch}/Socket/GetAddrInfo
+%{perl_vendorarch}/Socket/GetAddrInfo/*.pm
 %{_mandir}/man3/*
-%{_examplesdir}/%{name}-%{version}
+%{_mandir}/man1/get*info.*
+%attr(755,root,root) %{_bindir}/getaddrinfo
+%attr(755,root,root) %{_bindir}/getnameinfo

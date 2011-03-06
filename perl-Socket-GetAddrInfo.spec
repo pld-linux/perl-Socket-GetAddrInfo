@@ -22,6 +22,9 @@ BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+# Core.pm impl requires Socket 1.93 (newer than in perl 5.12.3) - skip it, XS impl will be used instead
+%define		_noautoreqfiles	%{perl_vendorarch}/Socket/GetAddrInfo/Core.pm
+
 %description
 The RFC 2553 functions getaddrinfo and getnameinfo provide an
 abstracted way to convert between a pair of host name/service name and

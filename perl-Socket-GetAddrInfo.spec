@@ -8,18 +8,19 @@
 Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 Summary(pl.UTF-8):	Socket::GetAddrInfo - funkcje getaddrinfo i getnameinfo zgodne z RFC 2553
 Name:		perl-Socket-GetAddrInfo
-Version:	0.21
-Release:	2
+Version:	0.22
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Socket/PEVANS/Socket-GetAddrInfo-%{version}.tar.gz
-# Source0-md5:	ec28c0139f5694ca982f392c7c699128
+# Source0-md5:	54c0d3a08757a1eeb118c1a5f54f6e1b
 URL:		http://search.cpan.org/dist/Socket-GetAddrInfo/
 BuildRequires:	perl-ExtUtils-CChecker >= 0.06
 %{?with_tests:BuildRequires:	perl-Test-Pod}
-BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	perl-devel >= 1:5.18.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # Core.pm impl requires Socket 1.93 (newer than in perl 5.12.3) - skip it, XS impl will be used instead
@@ -64,14 +65,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README
 %attr(755,root,root) %{_bindir}/getaddrinfo
 %attr(755,root,root) %{_bindir}/getnameinfo
-%dir %{perl_vendorarch}/Socket
-%{perl_vendorarch}/Socket/GetAddrInfo.pm
-%dir %{perl_vendorarch}/Socket/GetAddrInfo
-%{perl_vendorarch}/Socket/GetAddrInfo/*.pm
-%dir %{perl_vendorarch}/auto/Socket
-%dir %{perl_vendorarch}/auto/Socket/GetAddrInfo
-%{perl_vendorarch}/auto/Socket/GetAddrInfo/GetAddrInfo.bs
-%attr(755,root,root) %{perl_vendorarch}/auto/Socket/GetAddrInfo/GetAddrInfo.so
+%dir %{perl_vendorlib}/Socket
+%{perl_vendorlib}/Socket/GetAddrInfo.pm
+%dir %{perl_vendorlib}/Socket/GetAddrInfo
+%{perl_vendorlib}/Socket/GetAddrInfo/*.pm
 %{_mandir}/man1/getaddrinfo.1p*
 %{_mandir}/man1/getnameinfo.1p*
 %{_mandir}/man3/Socket::GetAddrInfo*.3pm*

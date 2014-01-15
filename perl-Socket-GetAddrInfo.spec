@@ -1,15 +1,15 @@
 #
 # Conditional build:
 %bcond_without	tests		# do not perform "make test"
-#
-%include	/usr/lib/rpm/macros.perl
+
 %define	pdir	Socket
 %define	pnam	GetAddrInfo
+%include	/usr/lib/rpm/macros.perl
 Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 Summary(pl.UTF-8):	Socket::GetAddrInfo - funkcje getaddrinfo i getnameinfo zgodne z RFC 2553
 Name:		perl-Socket-GetAddrInfo
 Version:	0.22
-Release:	2
+Release:	3
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -46,15 +46,15 @@ przekształca adres gniazda z powrotem na parę nazw hosta i usługi.
 
 %build
 %{__perl} Build.PL \
-	destdir=$RPM_BUILD_ROOT \
-	installdirs=vendor
+	perl=%{__perl} \
+	installdirs=vendor \
+	destdir=$RPM_BUILD_ROOT
 ./Build
 
 %{?with_tests:./Build test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 ./Build install
 
 %clean

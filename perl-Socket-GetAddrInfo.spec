@@ -4,7 +4,6 @@
 
 %define	pdir	Socket
 %define	pnam	GetAddrInfo
-%include	/usr/lib/rpm/macros.perl
 Summary:	Socket::GetAddrInfo - RFC 2553's getaddrinfo and getnameinfo functions
 Summary(pl.UTF-8):	Socket::GetAddrInfo - funkcje getaddrinfo i getnameinfo zgodne z RFC 2553
 Name:		perl-Socket-GetAddrInfo
